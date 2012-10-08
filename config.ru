@@ -6,9 +6,10 @@ require 'tentd-admin/app'
 require 'tentd-admin/setup_tent'
 require 'tentd-admin/set_entity'
 require 'rack/ssl-enforcer'
+require 'cfruntime'
 
 DataMapper.finalize
-DataMapper.setup(:default, ENV['DATABASE_URL'])
+DataMapper.setup(:default, ENV['DATABASE_URL'] || CFRuntime::CloudApp.service_props("postgresql")[:url])
 DataMapper.auto_upgrade!
 
 use Rack::SslEnforcer, hsts: true if ENV['RACK_ENV'] == 'production'
