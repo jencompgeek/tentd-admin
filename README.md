@@ -8,6 +8,16 @@ implementation.
 
 ## Getting Started
 
+### Cloud Foundry
+
+```shell
+vmc push --no-start
+vmc env-add tentd-admin ADMIN_USERNAME=admin
+vmc env-add tentd-admin ADMIN_PASSWORD=password
+vmc env-add tentd-admin SERVE_ASSETS=1
+vmc start tentd-admin
+```
+
 ### Heroku
 
 ```shell

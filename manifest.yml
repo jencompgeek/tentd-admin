@@ -1,0 +1,18 @@
+--- 
+applications: 
+  .: 
+    name: tentd-admin
+    framework: 
+      name: standalone
+      info: 
+        mem: 64M
+        description: Standalone Application
+        exec: 
+    runtime: ruby19
+    command: bundle exec puma -p $VCAP_APP_PORT
+    mem: 128M
+    url: tentd-admin.${target-base}
+    instances: 1
+    services: 
+      tentdb: 
+        type: postgresql
